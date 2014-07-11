@@ -1,0 +1,903 @@
+html, body {
+    background-color: #FFF;
+    color: #333;
+    font-size: 12px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+a {
+    /*color: #666;*/
+}
+
+.list-methods a {
+  color: #666;
+  font-size: 12px;
+}
+
+.expand-methods a {
+  color: #666;
+  font-size: 12px;
+}
+
+a.select-all {
+    color: #666;
+}
+
+a#toggle-endpoints {
+    color:#666;
+}
+
+a#toggle-methods {
+    color:#666;
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    position: relative;
+    text-align: left;
+}
+header {
+    text-align: left;
+    position: relative;
+    height: 50px;
+    background-color: #303030;
+    padding: 10px;
+}
+header .logo {
+    margin-top: 10px;
+    float: left;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    width: 158px;
+    height: 44px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+header .logo a {
+
+}
+nav {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+}
+nav a {
+    text-decoration: none;
+    color: #FFF;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+nav li.selected a:hover {
+    text-decoration: none;
+}
+nav ul {
+    float: right;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav li {
+    display: inline;
+    margin-right: 10px;
+    padding: 5px;
+}
+nav li.selected {
+    background-color: #1da5dd;
+}
+article {
+    position: relative;
+    overflow: auto;
+    text-align: left;
+}
+section {
+
+}
+
+footer {
+    text-align: left;
+    text-color: #969696;
+    text-shadow: 0.5px 0.5px 0.5px #CCC;
+    clear: both;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid #CCC;
+} p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.edit_error_class {
+  display: block;
+  color: red;
+}
+
+.lift_error {
+  color: red;
+}
+
+.lift_warning {
+  color: yellow;
+}
+
+.lift_notice {
+}
+
+#inline-list {
+	border: 1px solid #CCC;
+    border-radius: 8px;
+	margin: 0.5em;
+	width: auto;
+	padding: 5px;
+    margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+#inline-list p {
+	display: inline;
+}
+
+ul#inline-list li {
+    list-style-position: inside;
+    list-style-image: url(../../images/bullet.png);
+    margin: 0.5em;
+    padding: 0;
+}
+
+ol#inline-list li {
+    list-style-position: inside;
+    list-style-type: decimal;
+    margin: 0.5em;
+    padding: 0;
+}
+
+
+#doc-image {
+   	border: 1px solid #CCC;
+    border-radius: 8px;
+}
+
+/* From API */
+
+article ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+article ol {
+    margin-top: 5px;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 10px;
+}
+
+section ul {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.credentials {
+    background-color: #444;
+    padding: 5px 10px 0px 10px;
+    overflow: hidden;
+}
+.credentials h2 {
+    float: left;
+    margin: 18px 30px 7px 0px;
+    padding: 0px;
+    font-size: 18px;
+    color: #999;
+    font-weight: normal;
+}
+.credentials img {
+    display: none;
+}
+.credentials.authed {
+    background-color: #d6f6bd;
+    padding: 10px;
+}
+
+.credentials.authed form {
+    display: none;
+}
+
+.credentials img {
+    margin-left: 10px;
+}
+
+
+.credentials div {
+    float: left;
+    margin-right: 15px;
+}
+
+.credentials form {
+    margin-top: 10px;
+}
+
+.credentials label {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 0px;
+    color: #FFF;
+}
+
+.credentials input {
+    width: 200px;
+    border: 0px none;
+    padding: 3px;
+}
+
+.credentials #oauth-auth {
+    margin-top: 20px;
+}
+
+#controls {
+    overflow: hidden;
+    margin-top: 10px;
+    border-width: 1px 0;
+}
+
+#controls ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 30px;
+}
+#controls li {
+    padding-right: 10px;
+    float: left;
+}
+
+#controls li:not(:first-child) {
+    padding-left: 10px;
+    border-left: 1px solid #ddd;
+}
+
+
+.livedoctable {
+    caption-side: bottom;
+    margin: 0.1em;
+    padding: 0.5em;
+    border: inset 2em;
+    border: outset 1em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+
+    background-color: #e9e8e8;
+
+    border-style: solid;
+    border-spacing: 0pt;
+    border-width: 1px;
+    border-color: #666;
+    border-radius: 4px;
+} tr, th, td {
+    padding: 0.2em;
+    border-color: #CCC;
+    border-collapse:collapse;
+    border-width: 0px;
+} tr.alt {
+    background-color: #f2f1f1;
+} tr.h11 {
+    background-color: #CCC;
+}
+
+.paramtable {
+    text-align: left;
+    caption-side: top;
+    margin: 0.1em;
+    border: inset 2em;
+    border: outset 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    border-style: solid;
+    border-spacing: 0pt;
+    border-width: 1px;
+    border-color: #666;
+    border-radius: 4px;
+}
+
+.paramtable th {
+    padding-left: 1em;
+    text-align: center;
+}
+
+.paramtable tr, td {
+    padding: 0.2em;
+    border-color: #CCC;
+    border-collapse:collapse;
+    border-width: 0px;
+}
+
+.jsoncomaretable {
+    padding: 6px 11px;
+}
+
+.twocolumn {
+
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  /*-webkit-column-rule: 1px solid #999;*/
+  /*-moz-column-rule: 1px solid #999;*/
+  /*column-rule: 1px solid #999;*/
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.examplecode {
+    font-size: 12px;
+    padding: 5px;
+    padding-left: 10px;
+    margin: 0px;
+    overflow: auto;
+    width: inherit;
+    background-color: #e9e8e8;
+    border-color: #666;
+    border-width: 2px;
+    color: #735100;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    background-image: url(../../images/back2.png);
+    margin-bottom: 6px;
+}
+
+.endpoint {
+    margin: 0;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #CCC;
+    list-style: none;
+}
+
+.endpoint.expanded {
+    background-color: #fff;
+}
+
+.endpoint > .title {
+    font-weight: normal;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.endpoint > .title .name {
+    font-size: 24px;
+    float: left;
+}
+
+.endpoint > .title .name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.endpoint > .title .actions {
+    float: right;
+}
+
+.endpoint > .title .actions li {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid #ddd;
+}
+
+.endpoint > .title .actions li:first-child {
+    border: 0;
+}
+
+.methods {
+    display: none;
+}
+
+.method {
+    font-size: 12px;
+    border: 1px solid #eee;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+.method div.headers {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 15px;
+}
+
+.method div.headers h4 {
+    margin-top: 0;
+}
+
+.method div.headers .fields {
+    display: none;
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.method div.headers .indicator {
+    border-width: 5px;
+    border-color: transparent transparent transparent #333;
+    border-style: solid;
+    display: block;
+    float: left;
+    margin: 11px 0 0 10px;
+}
+
+.method div.headers.expanded .indicator {
+    border-color: #333 transparent transparent transparent;
+    margin-top: 14px;
+}
+
+.method:first-of-type {
+    margin-top: 0;
+}
+
+.method .title {
+    overflow: hidden;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.method .title:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.method .title:hover span {
+    text-decoration: underline;
+}
+
+.method .title:hover span.http-method {
+    text-decoration: none;
+}
+
+.method .title span {
+    margin: 0 10px 0;
+    line-height: 33px;
+    float: left;
+}
+
+.method .title .uri {
+    font-family: 'Courier', monospace;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.method .title .uriparams {
+    font-family: 'Courier', monospace;
+    font-size: 14px;
+    color: blue;
+    text-align: left;
+    margin:auto; 
+}
+
+.method .title .name {
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.method .title .description {
+    float: right;
+    font-size: 12px;
+    text-align: right;
+}
+.method h4 {
+    padding: 0px;
+    margin: 0px;
+}
+.method p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+}
+.method ul {
+    list-style: disc;
+}
+.method li {
+    margin-left: 20px;
+    padding-top: 3px;
+    font-size: 12px;
+}
+
+.method .title .http-method {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 25px;
+    padding-left: 2px;
+    width: 40px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    line-height: 33px;
+    float: left;
+}
+
+.method form {
+    clear: both;
+    padding: 15px;
+    display: none;
+}
+
+.method .desc_title {
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0.5em;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+.method form a.clear-results {
+    color: red;
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.method form a.clear-results:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.method table.parameters {
+    margin-bottom: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.method tr.required {
+    font-weight: bold;
+}
+
+.method tbody.putmandatory {
+    background-image: url(../../img/back2.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666;
+    border-radius: 3px;
+
+    border-left-color: #FFB400;
+    border-left-width: 3px;
+}
+
+.method tbody.urlparams{
+    background-image: url(../../img/back3.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666;
+    border-radius: 3px;
+
+    border-left-color: #0000ff;
+    border-left-width: 3px;
+}
+
+.method th {
+    font-weight: bold;
+    text-align: left;
+}
+
+.method th, .method td {
+    padding: 5px;
+    vertical-align: middle;
+    font-size: 12px;
+    min-width: 50px;
+} .required {
+     min-width: 10px;
+     text-align: center;
+  }
+
+.method h4 {
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+
+.method h4 a.select-all {
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.method pre.examplecode {
+    font-size: 12px;
+    padding: 5px;
+    padding-left: 10px;
+    margin: 0px;
+    overflow: auto;
+    width: 80%;
+    background-color: inherit;
+    border-color: #333;
+    border-width: 1px;
+    color: #735100;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    background-image: url(../../img/back2.png);
+    margin-bottom: 6px;
+}
+
+.method pre {
+    font-size: 12px;
+    padding: 10px;
+    margin: 0px;
+    line-height: 12px;
+    overflow: auto;
+    background-color: #333;
+    color: #FFB400;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.methods pre.call {
+    border-left-style: solid;
+    border-right-style: solid;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-left-color: #333;
+    border-right-color: blue;
+}
+
+.method pre.putdoc {
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #FFB400;
+}
+
+.method pre.response {
+    max-height: 500px;
+}
+
+.method pre.error {
+    background-color: rgba(255, 245, 245, 0.9);
+    border-color: rgba(255, 100, 100, 0.5);
+}
+
+.method pre.examplescript {
+    background-image: url(../../img/back2.png);
+    margin-bottom: 6px;
+}
+
+.get {
+    background: #e7f0f7;
+    border-color: #aecce4;
+}
+
+.get .http-method {
+    background-color: #0061ac;
+}
+.get th, .post th, .put th, .delete th {
+    border-bottom: 1px solid #CCC;
+}
+.get td, .post td, .put td, .delete td {
+    border-bottom: 1px solid #CCC;
+}
+
+.post {
+    background: #e7f6ec;
+    border-color: #afe1c0;
+}
+
+.post .http-method {
+    background-color: #04a73a;
+}
+
+.put {
+    background: #f9f2e9;
+    border-color: #e9cead;
+}
+
+.put .http-method {
+    background-color: #b06300;
+}
+
+.delete {
+    background: #f5e8e8;
+    border-color: #deb3b3;
+}
+
+.delete .http-method {
+    background-color: #a20909;
+}
+
+.authreq {
+    background-image: url(../img/auth.png);
+    background-repeat: no-repeat;
+    background-position: 47px 50%;
+}
+
+.noauth {
+    background-image: url(../img/unauth.png);
+    background-repeat: no-repeat;
+    background-position: 47px 50%;
+}
+
+.ir {
+    display: block;
+    text-indent: -999em;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    text-align: left;
+    direction: ltr;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+
+/* other pages */
+.tutorials {
+    padding: 10px;
+}
+.tutorials ol {
+    list-style: decimal;
+    /*text-shadow: 0.5px 0.5px 0.5px #ceced0;*/
+    margin-left: 20px;
+}
+
+.terms {
+    padding: 10px;
+}
+.terms table {
+    border-collapse: collapse;
+}
+.terms td {
+    min-width: 200px;
+    padding: 5px;
+}
+.terms thead td {
+    font-weight: bold;
+    background-color: #FFF;
+}
+.terms tr {
+}
+.terms tr:nth-child(odd) {
+    background-color:#eee;
+}
+.getting-started {
+    background-image: url(../../img/homebg.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 1px;
+    border-top: 1px solid white;
+    position: relative;
+}
+.getting-started div {
+    left: 550px;
+    top: 40px;
+    width: 400px;
+    position: absolute;
+}
+.getting-started h1 {
+    font-size: 64px;
+    font-weight: normal;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+}
+.getting-started p {
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFF;
+}
+.getting-started p.button {
+    margin:0;
+    padding:0;
+    height:32px; /* Height of logo */
+    width: 177px; /* Width of logo */
+    overflow:hidden;  /* Stops text from protruding if  H1 text is larger than logo */
+    position:relative; /*must be relative or absolute */
+}
+.getting-started p.button a {
+    display:block;
+    height:100%;
+    width:100%;
+}
+.getting-started p.button a span{
+    display:block;
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:url(../../img/requestbutton.png) no-repeat left top;
+    cursor:pointer; /* ie demands we reinstate the pointer cursor */
+}
+.getting-started p a {
+    color: #FFF;
+}
+.legal {
+    padding: 10px;
+}
+.legal ul {
+    margin-left: 40px;
+}

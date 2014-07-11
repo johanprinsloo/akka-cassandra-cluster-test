@@ -1,0 +1,277 @@
+
+
+.inputform {
+    margin: 0;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #CCC;
+    list-style: none;
+}
+
+.inputform > .title {
+    font-weight: normal;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.inputform > .title .name {
+    font-size: 24px;
+    float: left;
+}
+
+.inputform > .title .name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.inputelem {
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin: 4px 0;
+}
+
+.inputelem:first-of-type {
+    margin-top: 0;
+}
+
+.inputelem .title {
+	height:40px;
+    overflow: hidden;
+}
+
+.inputelem .title span.name {
+    margin-top: 5px;
+    margin-left:20px;
+    margin-right:10px;
+    margin-bottom:0px;
+    font-weight: bold;
+    line-height: 33px;
+    float: left;
+}
+
+.inputelem .title span.value {
+    margin-top: 5px;
+    margin-left:0px;
+    margin-right:20px;
+    margin-bottom:0px;
+    line-height: 33px;
+    float: left;
+}
+
+.inputelem .title span.value input {
+	font-family: 'Courier', monospace;
+    font-size: 16px;
+	height:20px;
+	width:105px;
+}
+
+.inputelem .title span.value input.meterid {
+	width:125px;
+}
+
+.inputelem .title span.value input.adjustment {
+	width:90px;
+}
+
+.inputelem .title .value {
+    margin-left: 40px;
+    margin-right: 5px;
+}
+
+
+.inputelem .title .name {
+    font-size: 16px;
+    min-width: 175px;
+}
+
+.inputelem .title span.desc_title {
+	float:right;
+  font-size: 12px;
+  font-style: italic;
+  margin-right: 25px;
+  margin-top: 10px;
+}
+
+.outputresponse {
+    margin: 0;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #CCC;
+    list-style: none;
+}
+
+.outputresponse.expanded {
+    background-color: #fff;
+}
+
+.outputresponse > .title {
+    font-weight: normal;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.outputresponse > .title .name {
+    font-size: 24px;
+    float: left;
+}
+
+.outputresponse > .title .name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.outputelem {
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin: 4px 0;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.outputelem:first-of-type {
+    margin-top: 0;
+}
+
+.outputelem .title {
+	height:40px;
+    overflow: hidden;
+}
+
+.outputelem .title span {
+	font-size: 14px;
+	line-height: 33px;
+	padding: 5px 5px 0;
+    text-align:right;
+    float: left;
+}
+
+.outputelem .title span.header {
+	font-size: 16px;
+    text-align:right;
+    color: black;
+    background-color: #ccc;
+}
+
+.outputelem .title .date_submitted {
+	padding-x: 0px;
+	width:165px;
+}
+
+.outputelem .title .entity {
+    width:198px;
+}
+
+.outputelem .title .datamod {
+    width:165px;
+}
+
+.outputelem .title .start {
+    width:150px;
+}
+
+.outputelem .title .end {
+    width:150px;
+}
+
+.outputelem .title .status {
+    width:110px;
+}
+
+.outputelem .invisibleQueryid{
+     display:none;	
+}
+
+
+.outputelem .title span.highlightPending {
+	width:80px;
+	margin-left:30px;
+	text-align:center;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    line-height: 33px;
+    float: left;
+    background-color: #0000ff;
+}
+
+.outputelem .title span.highlightProgress {
+	width:80px;
+	margin-left:30px;
+	text-align:center;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    /*color: white; */
+    line-height: 33px;
+    float: left;
+    background-color: #ffff00;
+}
+
+.outputelem .title span.highlightComplete {
+	width:80px;
+	margin-left:30px;
+	text-align:center;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    /*color: white; */
+    line-height: 33px;
+    float: left;
+    background-color: #00ff00;
+}
+
+.outputelem .title span.highlightFail {
+	width:80px;
+	margin-left:30px;
+	text-align:center;
+    font-family: 'Courier', monospace;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    line-height: 33px;
+    float: left;
+    background-color: #ff0000;
+}
+
+.outputelem .title:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.outputelem .title:hover span {
+    text-decoration: underline;
+}
+
+.outputelem .title:hover span.status {
+    text-decoration: none;
+}
+
