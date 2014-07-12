@@ -40,11 +40,16 @@ object QueryDriver extends Logging {
   }
 
   def getResult( key : Int ) : Option[Result] = {
+    val t0 = System.currentTimeMillis()
     try {
       session.execute(s"SELECT * FROM results WHERE input=${key};").one() match {
         case r: Row => {
-          logger.info("\n RETURN FROM GET" + r.toString + "\n\n")
-          Some(mapResult(r))
+          val t1 = System.currentTimeMillis()
+          val res = mapResult(r)
+          val t2 = System.currentTimeMillis()
+          logger.info(s"\n RETURN FROM GET ${res.input}:${res.status}:${res.result.isDefined}:${res.calcTime.isDefined}" +
+            s"\n querytime:${(t1-t0)/1000000.0}  maptime:${(t2-t1)/1000000.0}\n")
+          Some(res)
         }
         case _ => {
           logger.warn(s"Did not find a entry for key:${key} in the data store")
@@ -67,7 +72,7 @@ object QueryDriver extends Logging {
       status = row.getString("status"),
       result = row.isNull("result") match {
         case true => None
-        case false => Some( BigInt(row.getString("result")) )
+        case false => Some( row.getString("result") )
       },
       calcTime = row.isNull("calctime") match{
         case true => None

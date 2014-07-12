@@ -35,7 +35,7 @@ trait ApiService extends HttpService with ClientAuthentication {
 
   import scala.concurrent.ExecutionContext.Implicits.global
   implicit val formats = Serialization.formats(NoTypeHints)
-  val rnd = new Random(0)
+  val router = actorRefFactory.actorOf(Props[Routee],"dynrouter")
 
   val apiRoute =
     authenticate( BasicAuth(realm = "Akka Cassandra Cluster Test") ) {
@@ -102,7 +102,7 @@ trait ApiService extends HttpService with ClientAuthentication {
         case None => {
           val inResult = QueryDriver.createEntry(input) match {
             case Some(r) => {
-              actorRefFactory.actorOf(Props[FactorialCalculator]) ! input
+              router ! input
               route(r)(ctx)
             }
             case None => {
