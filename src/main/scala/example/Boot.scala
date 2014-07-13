@@ -10,7 +10,7 @@ import scala.concurrent.duration._
 object Boot extends App {
 
   // we need an ActorSystem to host our application in
-  implicit val system = ActorSystem("on-spray-can")
+  implicit val system = ActorSystem("ClusterSystem")
 
   // create and start our service actor
   val service = system.actorOf(Props[ServiceActor], "api-service")
