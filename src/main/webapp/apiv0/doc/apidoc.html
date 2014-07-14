@@ -56,7 +56,7 @@
 
 <!--<div class="container">-->
 <div class="page-header">
-    <h2>Cluster API Live Documentation</h2>
+    <h2>Test Cluster API Live Documentation</h2>
 </div>
 
 <div class="row">
@@ -76,6 +76,35 @@
         API by interacting with the service through the web forms for each endpoint. The try-it button calls the real
         service with the parameters in the forms and displays the results.
     </p>
+
+    <h4>Architecture</h4>
+    <p>
+    The cluster is a co-located Akka and Cassandra one. Each node exposes identical services:
+    <ol>
+        <li>Spray.io HTTP service (API endpoints plus this Live Doc site)</li>
+        <li>Akka Cluster Node - actor based processing </li>
+        <li>Cassandra Cluster Node - Data store</li>
+    </ol>
+
+    <img align="center" width="50%" src="../../img/Spray-Akka-Cassandra.png">
+
+    <h4>Load Balancing</h4>
+    There are two levels of load balancing. The first is through the Load Balancer (e.g. Cloud Service or HAProxy) - this distributes incoming web traffic equally to all healty nodes.
+    The second is Akka Cluster work balancing. The cluster has a number of routees distributed across all cluster nodes. The distributor distributes work to the least loaded nodes. Least loaded in the sense of CPU, Memory, Latency or a combination thereof.
+    Each routee simply creates a new worker actor when it receives a request. The Worker does the calculation and dies off after updating the data store.
+
+    <h4>Optimizations</h4>
+    <h5>Computational Isolation</h5>
+    You will notice, especially for small clusters, that the cluster can easily be loaded to 100% CPU usage across all cores. The Spray HTTP service is resource starved by this and the responses will become sluggish or time out. The solution is fairly simple - Akka allows us to define cluster roles, we divide the cluster into a front-end part and a back-end part.
+    The calculation work is done exclusively on the back-end, leaving the front end resources to ensure timely responses to clients.
+    <h5>Data Locality</h5>
+    When the replication factor on the keyspace we use is smaller than the number of nodes all data will not be present on each node - the worker actors will sometimes do a cross cluster call, which is more expensive, latency wise.
+    It is possible to predict which nodes contain specific keys and we can launch worker actors with this in mind.
+    </p>
+    <h5>Resiliency</h5>
+    The combined cluster is fairly resilient out of the box - we can lose and node and the Load balancer as well as Akka and Cassandra will notice and stop routing traffic, work, data to the dead node.
+    It is further possible to use Event Sourcing to make sure work-in-progress on a failed node is not lost and can be continued.
+
     <br>
 </section>
 
@@ -84,7 +113,7 @@
 <ul>
 <li class="endpoint">
 <h3 class="title">
-    <span class="name">Work upload</span>
+    <span class="name">Factorial Calculation</span>
     <ul class="actions">
         <li class="list-methods"><a href="#">List Methods</a></li>
         <li class="expand-methods"><a href="#">Expand Methods</a></li>
@@ -94,7 +123,7 @@
     <p>
         The PUT call allows the user to add work to the cluster by specifying a input to a factorial function.
         The cluster will distribute the work to a actor and persist the result to the data store indexed by the input number.
-        The GET call retrieves the result if it has been calculated.
+        The GET call retrieves the result if it has been calculated. Results that have been calculated previously are not re-calculated - their results are looked up in the data store and returned.
     </p>
 </section>
 <br>
