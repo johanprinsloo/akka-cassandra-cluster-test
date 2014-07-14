@@ -102,7 +102,7 @@
     It is possible to predict which nodes contain specific keys and we can launch worker actors with this in mind.
     </p>
     <h5>Resiliency</h5>
-    The combined cluster is fairly resilient out of the box - we can lose and node and the Load balancer as well as Akka and Cassandra will notice and stop routing traffic, work, data to the dead node.
+    The combined cluster is fairly resilient out of the box - we can lose a node and the Load balancer as well as Akka and Cassandra will notice and stop routing traffic, work and data to the dead node.
     It is further possible to use Event Sourcing to make sure work-in-progress on a failed node is not lost and can be continued.
 
     <br>
