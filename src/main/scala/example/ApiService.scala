@@ -35,7 +35,8 @@ trait ApiService extends HttpService with ClientAuthentication {
 
   import scala.concurrent.ExecutionContext.Implicits.global
   implicit val formats = Serialization.formats(NoTypeHints)
-  val router = actorRefFactory.actorOf(Props[Routee],"dynrouter")
+  //val router = actorRefFactory.actorOf(Props[Routee],"dynrouter")
+  val router = actorRefFactory.actorOf(FromConfig.props(Props[Routee]), name = "dynrouter")
 
   val apiRoute =
     authenticate( BasicAuth(realm = "Akka Cassandra Cluster Test") ) {
