@@ -1,6 +1,7 @@
 package example
 
 import akka.actor.{Props, Actor}
+import akka.routing.FromConfig
 import spray.routing._
 import spray.http._
 import MediaTypes._
