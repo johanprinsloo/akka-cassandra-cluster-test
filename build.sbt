@@ -1,3 +1,7 @@
+import sbt.Keys._
+import com.typesafe.sbt.SbtAspectj.{ Aspectj, aspectjSettings }
+import com.typesafe.sbt.SbtAspectj.AspectjKeys.{ compileOnly, weaverOptions }
+
 name := """akka-cassandra-cluster-test"""
 
 version := "1.0.0"
@@ -10,14 +14,20 @@ resolvers ++= Seq(
   "snapshots"           at "http://oss.sonatype.org/content/repositories/snapshots",
   "releases"            at "http://oss.sonatype.org/content/repositories/releases",
   "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
-  "spray repo"          at "http://repo.spray.io"
+  "spray repo"          at "http://repo.spray.io",
+  "Kamon Repository"    at "http://repo.kamon.io"
 )
 
 seq(Revolver.settings: _*)
 
+fork in run := true
+
 scalacOptions ++= Seq("-feature", "-unchecked", "-deprecation", "-encoding", "utf8")
 
-javaOptions := Seq("-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000", "-Djava.library.path=./sigar", "-Xms128m", "-Xmx1024m")
+javaOptions := Seq("-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000", "-Djava.library.path=./lib", "-Xms128m", "-Xmx1024m","-javaagent:./lib/aspectjweaver-1.8.1.jar")
+
+// javaOptions in run <++= AspectjKeys.weaverOptions in Aspectj
+
 
 parallelExecution in Test := false
 
@@ -34,6 +44,10 @@ libraryDependencies ++= {
     "io.spray"                %   "spray-routing"   % sprayVersion,
     "io.spray"                %   "spray-testkit"   % sprayVersion,
     "io.spray"                %   "spray-caching"   % sprayVersion,
+    "io.kamon"                %%  "kamon-core"      % "0.3.2",
+    "io.kamon"                %%  "kamon-spray"     % "0.3.2",
+    "io.kamon"                %%  "kamon-statsd"    % "0.3.2",
+    "org.aspectj"             %   "aspectjtools"    % "1.8.1",
     "org.json4s"              %%  "json4s-native"   % "3.2.4",
     "joda-time"               %   "joda-time"       % "2.3",
     "org.joda"                %   "joda-convert"    % "1.4",
