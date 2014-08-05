@@ -10,7 +10,7 @@ $ ./sbt
 Opens the SBT console in which the following commands are used:
 
 ```
-> re-start
+> run
 ```
 
 Will download dependencies (might take some time on the first run) and compile the code and run the Spray service
