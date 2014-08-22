@@ -1,5 +1,3 @@
-resolvers += Classpaths.typesafeReleases
+resolvers += "Kamon Releases" at "http://repo.kamon.io"
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.4.0")
-
-addSbtPlugin("io.spray" % "sbt-revolver" % "0.7.2")
+addSbtPlugin("com.typesafe.sbt" % "sbt-aspectj" % "0.9.4")
