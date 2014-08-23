@@ -14,7 +14,8 @@ import org.json4s.JsonDSL.WithBigDecimal._
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.{read, write}
 import spray.http.HttpHeaders.{`Content-Type`, Location}
-
+import akka.actor.{Props, Actor}
+import akka.routing.FromConfig
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -28,6 +29,8 @@ class ServiceActor extends Actor with ApiService with LiveDocService with Monito
   // other things here, like request stream processing
   // or timeout handling
   def receive = runRoute(monRoute ~ apiRoute ~ docRoute)
+
+  //context.actorOf(Props[Routee], name = "justtotest")
 }
 
 
@@ -40,20 +43,20 @@ trait ApiService extends HttpService with ClientAuthentication {
   val router = actorRefFactory.actorOf(FromConfig.props(Props[Routee]), name = "dynrouter")
 
   val apiRoute =
-    authenticate( BasicAuth(realm = "Akka Cassandra Cluster Test") ) {
-      client =>
+  //authenticate( BasicAuth(realm = "Akka Cassandra Cluster Test") ) {
+  //client =>
+    path("" ~ Slash.?) {
+      redirect("/doc/v0/", Found)
+    } ~
+      path("api" ~ Slash.?) {
+        redirect("/api/v0", Found)
+      } ~
+      pathPrefix("api" / "v0") {
         path("" ~ Slash.?) {
-          redirect("/doc/v0/", Found)
+          complete {
+            hyperdocL0V0
+          }
         } ~
-        path("api" ~ Slash.?) {
-          redirect("/api/v0", Found)
-        } ~
-        pathPrefix("api" / "v0") {
-          path("" ~ Slash.?) {
-            complete {
-              hyperdocL0V0
-            }
-          } ~
           path("doc") {
             redirect("/doc/v0/", Found)
           } ~
@@ -66,24 +69,24 @@ trait ApiService extends HttpService with ClientAuthentication {
                   }
                 }
               } ~
-              put {
-                putQuery( in ) { result =>
-                 respondWithMediaType(`application/json`) {
-                   complete(write(result))
-                 }
-                }
-              } ~
-              delete {
-                deleteQuery( in ) { result =>
-                  respondWithMediaType(`application/json`){
-                    complete(write(result))
+                put {
+                  putQuery( in ) { result =>
+                    respondWithMediaType(`application/json`) {
+                      complete(write(result))
+                    }
+                  }
+                } ~
+                delete {
+                  deleteQuery( in ) { result =>
+                    respondWithMediaType(`application/json`){
+                      complete(write(result))
+                    }
                   }
                 }
-              }
             }
           }
-        }
-    }
+        //}
+      }
 
   def getResult( input : Int ) : ( Result  => Route ) => Route = {
     route => ctx => {
@@ -93,7 +96,7 @@ trait ApiService extends HttpService with ClientAuthentication {
           ctx.complete( HttpResponse( StatusCodes.PartialContent, HttpEntity(`application/json`, write(r))))
         case None =>
           ctx.complete( HttpResponse( StatusCodes.NotFound,
-                                      HttpEntity(`application/json`, write(Message(msg = s"Key ${input} not found ")))))
+            HttpEntity(`application/json`, write(Message(msg = s"Key ${input} not found ")))))
       }
     }
   }
