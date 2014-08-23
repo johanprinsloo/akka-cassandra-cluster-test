@@ -8,7 +8,7 @@ version := "1.0.0"
 
 organization := "io"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.10.4"
 
 resolvers ++= Seq(
   "snapshots"           at "http://oss.sonatype.org/content/repositories/snapshots",
@@ -28,6 +28,14 @@ javaOptions := Seq("-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,
 
 // javaOptions in run <++= AspectjKeys.weaverOptions in Aspectj
 
+
+//javaOptions  += s"-javaagent:/home/ubuntu/.ivy2/cache/org.aspectj/aspectjweaver/jars/aspectjweaver-1.8.1.jar"
+//javaOptions  += s"-javaagent:/home/iuser/.ivy2/cache/org.aspectj/aspectjweaver/jars/aspectjweaver-1.8.1.jar"
+//javaOptions +=  s"-javaagent:./lib/weaver/aspectjweaver-1.7.4.jar"
+
+// fork in run := true
+
+//connectInput in run := true
 
 parallelExecution in Test := false
 
